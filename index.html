@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ôn Tập Lịch Sử Việt Nam - Đầy Đủ Chức Năng</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Chart.js cho thống kê -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -24,14 +19,10 @@
             --light-bg: #f9f7f3;
             --dark-text: #2c1810;
             --border-color: #d4a373;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --info: #17a2b8;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
@@ -44,25 +35,11 @@
             padding: 2rem;
             text-align: center;
             border-bottom: 5px solid var(--secondary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-style: italic;
         }
 
         /* Navigation */
@@ -72,7 +49,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -93,10 +69,10 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: all 0.3s;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -104,54 +80,11 @@
             color: var(--dark-text);
         }
 
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: white;
-        }
-
-        .user-menu i {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main Content */
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            width: 0%;
-            transition: width 0.3s;
-            border-radius: 10px;
         }
 
         /* Stats Cards */
@@ -169,29 +102,17 @@
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-left: 4px solid var(--primary-color);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
         }
 
         .stat-card i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-text);
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
         }
 
         /* Mode Toggle */
@@ -200,7 +121,6 @@
             gap: 1rem;
             margin-bottom: 2rem;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         .mode-btn {
@@ -234,36 +154,11 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .filter-row {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .filter-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .filter-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--primary-color);
-        }
-
-        .filter-group select, .filter-group input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-        }
-
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
         .filter-btn {
@@ -273,13 +168,11 @@
             color: var(--dark-text);
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 500;
             transition: all 0.3s;
         }
 
         .filter-btn:hover {
             background: var(--border-color);
-            color: white;
         }
 
         .filter-btn.active {
@@ -310,11 +203,6 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .search-box button:hover {
-            background: #5e0b0b;
         }
 
         /* Questions Grid */
@@ -330,13 +218,7 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s;
             border: 1px solid var(--border-color);
-        }
-
-        .question-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
         .card-header {
@@ -354,14 +236,12 @@
             padding: 0.25rem 0.75rem;
             border-radius: 4px;
             font-size: 0.85rem;
-            font-weight: 500;
         }
 
         .difficulty-badge {
             padding: 0.25rem 0.75rem;
             border-radius: 4px;
             font-size: 0.85rem;
-            font-weight: 500;
         }
 
         .difficulty-badge.easy { background: #4caf50; color: white; }
@@ -376,8 +256,8 @@
             font-size: 1.1rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            color: var(--dark-text);
             cursor: pointer;
+            color: var(--primary-color);
         }
 
         .answers {
@@ -396,26 +276,30 @@
             background: var(--light-bg);
             border: 1px solid #ddd;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .answer-item:hover {
-            background: #e9ecef;
-        }
-
-        .answer-item.selected {
-            background: #cce5ff;
-            border-color: #004085;
-        }
-
-        .answer-item.correct {
+        .answer-item.correct-answer {
             background: #d4edda;
             border-color: #28a745;
         }
 
-        .answer-item.incorrect {
+        .answer-item.selected-correct {
+            background: #d4edda;
+            border-color: #28a745;
+            font-weight: bold;
+        }
+
+        .answer-item.selected-wrong {
             background: #f8d7da;
             border-color: #dc3545;
+        }
+
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-style: italic;
         }
 
         .card-footer {
@@ -429,30 +313,21 @@
         .bookmark-btn {
             background: none;
             border: none;
-            color: var(--secondary-color);
+            color: #999;
             cursor: pointer;
             font-size: 1.2rem;
         }
 
         .bookmark-btn.active {
-            color: var(--primary-color);
+            color: #ffc107;
         }
 
-        .note-btn {
-            background: none;
-            border: none;
-            color: var(--info);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* Quiz Mode */
+        /* Quiz Section */
         .quiz-container {
             background: white;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
         }
 
         .quiz-header {
@@ -460,22 +335,26 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-        }
-
-        .quiz-progress {
-            font-size: 1.2rem;
-            font-weight: 500;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .quiz-timer {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
             color: var(--primary-color);
-            font-weight: 700;
+        }
+
+        .quiz-score {
+            font-size: 1.2rem;
         }
 
         .quiz-question {
             font-size: 1.3rem;
             margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 4px;
         }
 
         .quiz-options {
@@ -487,7 +366,7 @@
         .quiz-option {
             padding: 1rem;
             background: var(--light-bg);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
@@ -515,6 +394,7 @@
         .quiz-navigation {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
             margin-top: 2rem;
         }
 
@@ -527,9 +407,14 @@
             transition: all 0.3s;
         }
 
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .quiz-btn.prev {
-            background: var(--light-bg);
-            color: var(--dark-text);
+            background: #6c757d;
+            color: white;
         }
 
         .quiz-btn.next {
@@ -538,11 +423,26 @@
         }
 
         .quiz-btn.submit {
-            background: var(--success);
+            background: #28a745;
             color: white;
         }
 
-        /* Flashcard Mode */
+        .quiz-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        /* Flashcard Section */
         .flashcard-container {
             perspective: 1000px;
             margin-bottom: 2rem;
@@ -572,6 +472,7 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
         .flashcard-front {
@@ -593,7 +494,7 @@
         }
 
         .flashcard-btn {
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 2rem;
             border: none;
             border-radius: 4px;
             background: var(--primary-color);
@@ -601,73 +502,61 @@
             cursor: pointer;
         }
 
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 2px;
-            height: 100%;
+        .page-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .page-btn:hover, .page-btn.active {
             background: var(--primary-color);
-            transform: translateX(-50%);
+            color: white;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            width: 50%;
-            padding: 0 2rem;
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
         }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .timeline-year {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Charts */
-        .charts-container {
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-bottom: 2rem;
         }
 
-        .chart-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .chart-title {
-            font-size: 1.2rem;
+        .footer-section h3 {
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
-        /* Notes Modal */
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -689,95 +578,14 @@
             background: white;
             padding: 2rem;
             border-radius: 8px;
-            max-width: 500px;
+            max-width: 400px;
             width: 90%;
-        }
-
-        .modal textarea {
-            width: 100%;
-            height: 150px;
-            padding: 0.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            margin: 1rem 0;
         }
 
         .modal-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: flex-end;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            background: white;
-            color: var(--dark-text);
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
-
-        .page-btn:hover, .page-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-text);
-            color: white;
-            padding: 3rem 2rem 1rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--secondary-color);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid #444;
-            color: #888;
+            margin-top: 1rem;
         }
 
         /* Responsive */
@@ -785,125 +593,51 @@
             .stats-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .charts-container {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
             .footer-content {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            color: var(--dark-text);
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            border-left: 4px solid var(--primary-color);
-            z-index: 1000;
-            animation: slideIn 0.3s;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1><i class="fas fa-landmark"></i> Ôn Tập Lịch Sử Việt Nam</h1>
-            <p>Hành trình qua những trang sử hào hùng của dân tộc</p>
-        </div>
+        <h1><i class="fas fa-landmark"></i> Ôn Tập Lịch Sử Việt Nam</h1>
+        <p>Hành trình qua những trang sử hào hùng của dân tộc</p>
     </header>
 
     <nav>
         <div class="nav-container">
             <div class="nav-links">
-                <a href="#home" class="active" onclick="showSection('home')"><i class="fas fa-home"></i> Trang chủ</a>
-                <a href="#questions" onclick="showSection('questions')"><i class="fas fa-question-circle"></i> Câu hỏi</a>
-                <a href="#quiz" onclick="showSection('quiz')"><i class="fas fa-gamepad"></i> Bài kiểm tra</a>
-                <a href="#flashcard" onclick="showSection('flashcard')"><i class="fas fa-layer-group"></i> Flashcard</a>
-                <a href="#timeline" onclick="showSection('timeline')"><i class="fas fa-clock"></i> Dòng thời gian</a>
-                <a href="#stats" onclick="showSection('stats')"><i class="fas fa-chart-bar"></i> Thống kê</a>
-            </div>
-            <div class="user-menu">
-                <i class="fas fa-bell" onclick="showNotifications()"></i>
-                <i class="fas fa-user" onclick="showProfile()"></i>
-                <span>Xin chào, User</span>
+                <a onclick="showSection('home')" class="active"><i class="fas fa-home"></i> Trang chủ</a>
+                <a onclick="showSection('quiz')"><i class="fas fa-gamepad"></i> Bài kiểm tra</a>
+                <a onclick="showSection('flashcard')"><i class="fas fa-layer-group"></i> Flashcard</a>
             </div>
         </div>
     </nav>
 
-    <div class="container" id="home-section">
-        <!-- Progress -->
-        <div class="progress-container">
-            <div class="progress-header">
-                <span><i class="fas fa-chart-line"></i> Tiến độ học tập</span>
-                <span id="progress-percent">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
-            </div>
-        </div>
-
+    <!-- Home Section -->
+    <div id="home-section" class="container">
         <!-- Stats -->
         <div class="stats-container">
-            <div class="stat-card" onclick="filterByStatus('all')">
+            <div class="stat-card">
                 <i class="fas fa-book"></i>
-                <div class="stat-number" id="total-questions">120</div>
+                <div class="stat-number" id="total-questions">12</div>
                 <div class="stat-label">Tổng câu hỏi</div>
             </div>
-            <div class="stat-card" onclick="filterByStatus('completed')">
+            <div class="stat-card">
                 <i class="fas fa-check-circle"></i>
-                <div class="stat-number" id="completed-count">45</div>
+                <div class="stat-number" id="completed-count">0</div>
                 <div class="stat-label">Đã hoàn thành</div>
             </div>
-            <div class="stat-card" onclick="filterByStatus('bookmarked')">
-                <i class="fas fa-bookmark"></i>
-                <div class="stat-number" id="bookmarked-count">12</div>
-                <div class="stat-label">Đã đánh dấu</div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <div class="stat-number" id="correct-count">0</div>
+                <div class="stat-label">Đã đúng</div>
             </div>
-            <div class="stat-card" onclick="filterByStatus('streak')">
-                <i class="fas fa-fire"></i>
-                <div class="stat-number" id="streak-days">7</div>
-                <div class="stat-label">Ngày liên tiếp</div>
+            <div class="stat-card">
+                <i class="fas fa-bookmark"></i>
+                <div class="stat-number" id="bookmark-count">0</div>
+                <div class="stat-label">Đã đánh dấu</div>
             </div>
         </div>
 
@@ -911,43 +645,10 @@
         <div class="mode-toggle">
             <button class="mode-btn active" onclick="setMode('review')"><i class="fas fa-book-open"></i> Ôn tập</button>
             <button class="mode-btn" onclick="setMode('practice')"><i class="fas fa-pencil-alt"></i> Luyện tập</button>
-            <button class="mode-btn" onclick="setMode('exam')"><i class="fas fa-graduation-cap"></i> Thi thử</button>
         </div>
 
         <!-- Filters -->
         <div class="filters">
-            <div class="filter-row">
-                <div class="filter-group">
-                    <label><i class="fas fa-tag"></i> Thời kỳ</label>
-                    <select id="era-filter" onchange="applyFilters()">
-                        <option value="all">Tất cả</option>
-                        <option value="ancient">Cổ đại (Hùng Vương - 938)</option>
-                        <option value="feudal">Phong kiến (939 - 1858)</option>
-                        <option value="french">Pháp thuộc (1858 - 1945)</option>
-                        <option value="revolution">Cách mạng (1945 - 1975)</option>
-                        <option value="modern">Hiện đại (1975 - nay)</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label><i class="fas fa-signal"></i> Độ khó</label>
-                    <select id="difficulty-filter" onchange="applyFilters()">
-                        <option value="all">Tất cả</option>
-                        <option value="easy">Dễ</option>
-                        <option value="medium">Trung bình</option>
-                        <option value="hard">Khó</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label><i class="fas fa-star"></i> Trạng thái</label>
-                    <select id="status-filter" onchange="applyFilters()">
-                        <option value="all">Tất cả</option>
-                        <option value="unanswered">Chưa trả lời</option>
-                        <option value="correct">Đã đúng</option>
-                        <option value="incorrect">Đã sai</option>
-                        <option value="bookmarked">Đã đánh dấu</option>
-                    </select>
-                </div>
-            </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterByEra('all')">Tất cả</button>
                 <button class="filter-btn" onclick="filterByEra('ancient')">Cổ đại</button>
@@ -960,8 +661,8 @@
 
         <!-- Search -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi, sự kiện, nhân vật lịch sử..." onkeyup="searchQuestions()">
-            <button onclick="searchQuestions()"><i class="fas fa-search"></i> Tìm kiếm</button>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi...">
+            <button onclick="searchQuestions()"><i class="fas fa-search"></i> Tìm</button>
         </div>
 
         <!-- Questions Grid -->
@@ -972,25 +673,26 @@
     </div>
 
     <!-- Quiz Section -->
-    <div class="container" id="quiz-section" style="display: none;">
-        <div class="quiz-container">
+    <div id="quiz-section" class="container" style="display: none;">
+        <div class="quiz-container" id="quiz-container">
             <div class="quiz-header">
-                <div class="quiz-progress">Câu <span id="current-question">1</span>/<span id="total-questions-quiz">20</span></div>
+                <div class="quiz-progress">Câu <span id="current-quiz">1</span>/<span id="total-quiz">12</span></div>
                 <div class="quiz-timer" id="timer">15:00</div>
-                <div class="quiz-score">Điểm: <span id="score">0</span></div>
+                <div class="quiz-score">Điểm: <span id="score">0</span>/<span id="total-score">12</span></div>
             </div>
             <div class="quiz-question" id="quiz-question"></div>
             <div class="quiz-options" id="quiz-options"></div>
             <div class="quiz-navigation">
-                <button class="quiz-btn prev" onclick="prevQuestion()"><i class="fas fa-chevron-left"></i> Câu trước</button>
-                <button class="quiz-btn next" onclick="nextQuestion()">Câu sau <i class="fas fa-chevron-right"></i></button>
-                <button class="quiz-btn submit" onclick="submitQuiz()">Nộp bài <i class="fas fa-paper-plane"></i></button>
+                <button class="quiz-btn prev" onclick="prevQuiz()" disabled>← Câu trước</button>
+                <button class="quiz-btn next" onclick="nextQuiz()">Câu sau →</button>
+                <button class="quiz-btn submit" onclick="submitQuiz()">Nộp bài</button>
             </div>
+            <div id="quiz-result" style="display: none;"></div>
         </div>
     </div>
 
     <!-- Flashcard Section -->
-    <div class="container" id="flashcard-section" style="display: none;">
+    <div id="flashcard-section" class="container" style="display: none;">
         <div class="flashcard-container">
             <div class="flashcard" onclick="flipCard()">
                 <div class="flashcard-front" id="flashcard-front"></div>
@@ -998,44 +700,17 @@
             </div>
         </div>
         <div class="flashcard-controls">
-            <button class="flashcard-btn" onclick="prevCard()"><i class="fas fa-chevron-left"></i></button>
-            <span id="card-counter">1/20</span>
-            <button class="flashcard-btn" onclick="nextCard()"><i class="fas fa-chevron-right"></i></button>
+            <button class="flashcard-btn" onclick="prevCard()"><i class="fas fa-chevron-left"></i> Trước</button>
+            <span id="card-counter">1/12</span>
+            <button class="flashcard-btn" onclick="nextCard()">Sau <i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 
-    <!-- Timeline Section -->
-    <div class="container" id="timeline-section" style="display: none;">
-        <div class="timeline" id="timeline"></div>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="container" id="stats-section" style="display: none;">
-        <div class="charts-container">
-            <div class="chart-card">
-                <div class="chart-title">Phân bố câu hỏi theo thời kỳ</div>
-                <canvas id="era-chart"></canvas>
-            </div>
-            <div class="chart-card">
-                <div class="chart-title">Tiến độ học tập theo ngày</div>
-                <canvas id="progress-chart"></canvas>
-            </div>
-            <div class="chart-card">
-                <div class="chart-title">Tỉ lệ trả lời đúng/sai</div>
-                <canvas id="accuracy-chart"></canvas>
-            </div>
-            <div class="chart-card">
-                <div class="chart-title">Độ khó câu hỏi</div>
-                <canvas id="difficulty-chart"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notes Modal -->
+    <!-- Note Modal -->
     <div class="modal" id="note-modal">
         <div class="modal-content">
             <h3><i class="fas fa-edit"></i> Ghi chú</h3>
-            <textarea id="note-text" placeholder="Nhập ghi chú của bạn..."></textarea>
+            <textarea id="note-text" style="width: 100%; height: 100px; margin: 1rem 0;"></textarea>
             <div class="modal-buttons">
                 <button onclick="saveNote()">Lưu</button>
                 <button onclick="closeModal()">Hủy</button>
@@ -1046,43 +721,32 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3><i class="fas fa-landmark"></i> Ôn Tập Lịch Sử</h3>
-                <p>Dự án phi lợi nhuận giúp học sinh, sinh viên ôn tập lịch sử Việt Nam một cách hiệu quả và thú vị.</p>
+                <h3>Ôn Tập Lịch Sử</h3>
+                <p>Trang web ôn tập lịch sử Việt Nam miễn phí</p>
             </div>
             <div class="footer-section">
                 <h3>Liên kết</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Về chúng tôi</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Đóng góp câu hỏi</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Báo lỗi</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Liên hệ</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Đóng góp</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Theo dõi</h3>
                 <ul>
                     <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
                     <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
-                    <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Tải ứng dụng</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-google-play"></i> Google Play</a></li>
-                    <li><a href="#"><i class="fab fa-apple"></i> App Store</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Ôn Tập Lịch Sử Việt Nam. Mã nguồn mở trên GitHub.</p>
-            <p>Dữ liệu được tổng hợp từ nhiều nguồn và kiểm duyệt bởi các nhà sử học.</p>
+            <p>&copy; 2025 Ôn Tập Lịch Sử Việt Nam</p>
         </div>
     </footer>
 
     <script>
-        // Dữ liệu câu hỏi mở rộng
+        // Dữ liệu câu hỏi
         const questions = [
             {
                 id: 1,
@@ -1091,25 +755,21 @@
                 correct: 0,
                 era: "feudal",
                 difficulty: "easy",
-                explanation: "Đinh Bộ Lĩnh lên ngôi năm 968, đặt tên nước là Đại Cồ Việt, đóng đô ở Hoa Lư.",
-                year: 968,
-                event: "Thành lập nhà Đinh"
+                explanation: "Đinh Bộ Lĩnh lên ngôi năm 968, đặt tên nước là Đại Cồ Việt, đóng đô ở Hoa Lư."
             },
             {
                 id: 2,
                 question: "Chiến thắng Bạch Đằng năm 938 có ý nghĩa gì?",
                 answers: [
-                    "Kết thúc 1000 năm Bắc thuộc, mở ra thời kỳ độc lập tự chủ",
-                    "Đánh tan quân Nguyên Mông lần thứ nhất",
-                    "Thống nhất đất nước sau loạn 12 sứ quân",
-                    "Mở đầu thời kỳ phong kiến Việt Nam"
+                    "Kết thúc 1000 năm Bắc thuộc",
+                    "Đánh tan quân Nguyên Mông",
+                    "Thống nhất đất nước",
+                    "Mở đầu thời kỳ phong kiến"
                 ],
                 correct: 0,
                 era: "ancient",
                 difficulty: "medium",
-                explanation: "Ngô Quyền lãnh đạo trận đánh, đánh bại quân Nam Hán, chấm dứt 1000 năm Bắc thuộc.",
-                year: 938,
-                event: "Chiến thắng Bạch Đằng"
+                explanation: "Ngô Quyền lãnh đạo trận đánh, đánh bại quân Nam Hán, chấm dứt 1000 năm Bắc thuộc."
             },
             {
                 id: 3,
@@ -1118,9 +778,7 @@
                 correct: 0,
                 era: "feudal",
                 difficulty: "easy",
-                explanation: "Nguyễn Trãi viết Bình Ngô đại cáo năm 1428, tuyên bố độc lập sau thắng lợi của khởi nghĩa Lam Sơn.",
-                year: 1428,
-                event: "Công bố Bình Ngô đại cáo"
+                explanation: "Nguyễn Trãi viết Bình Ngô đại cáo năm 1428."
             },
             {
                 id: 4,
@@ -1129,108 +787,106 @@
                 correct: 0,
                 era: "modern",
                 difficulty: "easy",
-                explanation: "Chiến dịch Điện Biên Phủ kéo dài 56 ngày đêm (13/3 - 7/5/1954), kết thúc thắng lợi.",
-                year: 1954,
-                event: "Chiến thắng Điện Biên Phủ"
+                explanation: "Chiến dịch Điện Biên Phủ kết thúc ngày 7/5/1954."
             },
             {
                 id: 5,
-                question: "Ai là người lãnh đạo cuộc khởi nghĩa Lam Sơn?",
+                question: "Ai lãnh đạo cuộc khởi nghĩa Lam Sơn?",
                 answers: ["Lê Lợi", "Nguyễn Trãi", "Trần Nguyên Hãn", "Đinh Liệt"],
                 correct: 0,
                 era: "feudal",
                 difficulty: "easy",
-                explanation: "Lê Lợi lãnh đạo khởi nghĩa Lam Sơn (1418-1427) chống quân Minh, lập ra nhà Hậu Lê.",
-                year: 1418,
-                event: "Khởi nghĩa Lam Sơn"
+                explanation: "Lê Lợi lãnh đạo khởi nghĩa Lam Sơn (1418-1427)."
             },
             {
                 id: 6,
-                question: "Nhà nước Văn Lang ra đời vào khoảng thời gian nào?",
-                answers: [
-                    "Thế kỷ VII TCN",
-                    "Thế kỷ III TCN",
-                    "Thế kỷ I SCN",
-                    "Thế kỷ X SCN"
-                ],
+                question: "Nhà nước Văn Lang ra đời thời gian nào?",
+                answers: ["TK VII TCN", "TK III TCN", "TK I SCN", "TK X SCN"],
                 correct: 0,
                 era: "ancient",
                 difficulty: "medium",
-                explanation: "Theo truyền thuyết, Văn Lang được thành lập vào thế kỷ VII TCN dưới thời vua Hùng.",
-                year: -700,
-                event: "Thành lập nước Văn Lang"
+                explanation: "Văn Lang được thành lập vào thế kỷ VII TCN."
             },
             {
                 id: 7,
-                question: "Quang Trung - Nguyễn Huệ lên ngôi vua vào năm nào?",
+                question: "Quang Trung lên ngôi năm nào?",
                 answers: ["1788", "1789", "1771", "1792"],
                 correct: 0,
                 era: "feudal",
                 difficulty: "medium",
-                explanation: "Nguyễn Huệ lên ngôi ở Phú Xuân (Huế) cuối năm 1788, lấy niên hiệu Quang Trung.",
-                year: 1788,
-                event: "Quang Trung lên ngôi"
+                explanation: "Nguyễn Huệ lên ngôi ở Phú Xuân cuối năm 1788."
             },
             {
                 id: 8,
-                question: "Hiệp định Paris được ký kết vào năm nào?",
+                question: "Hiệp định Paris ký năm nào?",
                 answers: ["1973", "1972", "1975", "1971"],
                 correct: 0,
                 era: "modern",
                 difficulty: "hard",
-                explanation: "Hiệp định Paris về chấm dứt chiến tranh ở Việt Nam được ký ngày 27/1/1973.",
-                year: 1973,
-                event: "Ký Hiệp định Paris"
+                explanation: "Hiệp định Paris ký ngày 27/1/1973."
             },
             {
                 id: 9,
-                question: "Ai là người lãnh đạo cuộc khởi nghĩa Hai Bà Trưng?",
-                answers: ["Trưng Trắc và Trưng Nhị", "Triệu Thị Trinh", "Lý Bí", "Phùng Hưng"],
+                question: "Ai lãnh đạo khởi nghĩa Hai Bà Trưng?",
+                answers: ["Trưng Trắc, Trưng Nhị", "Triệu Thị Trinh", "Lý Bí", "Phùng Hưng"],
                 correct: 0,
                 era: "ancient",
                 difficulty: "easy",
-                explanation: "Hai Bà Trưng phất cờ khởi nghĩa năm 40 SCN, giành độc lập trong 3 năm.",
-                year: 40,
-                event: "Khởi nghĩa Hai Bà Trưng"
+                explanation: "Hai Bà Trưng khởi nghĩa năm 40 SCN."
             },
             {
                 id: 10,
-                question: "Chiến thắng Rạch Gầm - Xoài Mút diễn ra năm nào?",
+                question: "Chiến thắng Rạch Gầm - Xoài Mút năm nào?",
                 answers: ["1785", "1775", "1795", "1765"],
                 correct: 0,
                 era: "feudal",
                 difficulty: "medium",
-                explanation: "Nguyễn Huệ đánh tan 5 vạn quân Xiêm tại Rạch Gầm - Xoài Mút (Tiền Giang) năm 1785.",
-                year: 1785,
-                event: "Chiến thắng Rạch Gầm - Xoài Mút"
+                explanation: "Nguyễn Huệ đánh tan quân Xiêm năm 1785."
+            },
+            {
+                id: 11,
+                question: "Ai là vị vua đầu tiên nhà Lý?",
+                answers: ["Lý Công Uẩn", "Lý Thường Kiệt", "Lý Nam Đế", "Lý Chiêu Hoàng"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "easy",
+                explanation: "Lý Công Uẩn lên ngôi năm 1009, dời đô về Thăng Long."
+            },
+            {
+                id: 12,
+                question: "Trận Bạch Đằng năm 1288 chống quân nào?",
+                answers: ["Nguyên Mông", "Nam Hán", "Minh", "Thanh"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "medium",
+                explanation: "Trần Hưng Đạo chỉ huy đánh tan quân Nguyên Mông."
             }
         ];
 
         // Biến toàn cục
         let currentQuestions = [...questions];
         let currentPage = 1;
-        let itemsPerPage = 8;
-        let bookmarkedIds = JSON.parse(localStorage.getItem('bookmarkedIds')) || [];
+        let itemsPerPage = 6;
         let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
+        let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
         let notes = JSON.parse(localStorage.getItem('notes')) || {};
         let currentQuestionId = null;
-        let quizState = {
-            currentIndex: 0,
-            answers: [],
-            score: 0,
-            timeLeft: 900, // 15 phút
-            timer: null
-        };
+        let currentMode = 'review';
+        
+        // Quiz variables
+        let quizQuestions = [];
+        let quizIndex = 0;
+        let quizAnswers = [];
+        let quizTimer = null;
+        let timeLeft = 900; // 15 phút
+        
+        // Flashcard variables
         let flashcardIndex = 0;
-        let charts = {};
 
         // Khởi tạo
         document.addEventListener('DOMContentLoaded', function() {
             displayQuestions();
             updateStats();
-            initCharts();
-            startStreak();
-            loadUserProgress();
         });
 
         // Hiển thị câu hỏi
@@ -1258,11 +914,10 @@
             card.className = 'question-card';
             card.dataset.id = q.id;
 
-            const isBookmarked = bookmarkedIds.includes(q.id);
             const userAnswer = userAnswers[q.id];
+            const isBookmarked = bookmarks.includes(q.id);
             const note = notes[q.id] || '';
 
-            // Badge độ khó
             let difficultyClass = '';
             let difficultyText = '';
             if (q.difficulty === 'easy') {
@@ -1276,7 +931,6 @@
                 difficultyText = 'Khó';
             }
 
-            // Thời kỳ label
             const eraLabels = {
                 'ancient': 'Cổ đại',
                 'feudal': 'Phong kiến',
@@ -1285,26 +939,40 @@
                 'modern': 'Hiện đại'
             };
 
+            // Tạo HTML cho đáp án
+            let answersHtml = '';
+            q.answers.forEach((answer, index) => {
+                let answerClass = '';
+                if (currentMode === 'practice' && userAnswer !== undefined) {
+                    if (index === q.correct) {
+                        answerClass = 'correct-answer';
+                    } else if (index === userAnswer && userAnswer !== q.correct) {
+                        answerClass = 'selected-wrong';
+                    }
+                }
+                answersHtml += `
+                    <div class="answer-item ${answerClass}" onclick="selectAnswer(${q.id}, ${index})">
+                        ${answer}
+                        ${index === q.correct && currentMode === 'practice' && userAnswer !== undefined ? ' ✓' : ''}
+                    </div>
+                `;
+            });
+
             card.innerHTML = `
                 <div class="card-header">
-                    <span class="era-tag"><i class="fas fa-tag"></i> ${eraLabels[q.era]}</span>
+                    <span class="era-tag">${eraLabels[q.era] || q.era}</span>
                     <span class="difficulty-badge ${difficultyClass}">${difficultyText}</span>
                 </div>
                 <div class="card-body">
                     <div class="question-text" onclick="toggleExpand(${q.id})">
-                        <i class="fas fa-question-circle" style="color: var(--primary-color); margin-right: 8px;"></i>
+                        <i class="fas fa-question-circle"></i>
                         ${q.question}
                     </div>
                     <div class="answers" id="answers-${q.id}">
-                        ${q.answers.map((answer, index) => `
-                            <div class="answer-item ${userAnswer === index ? (index === q.correct ? 'correct' : 'incorrect') : ''}" 
-                                 onclick="selectAnswer(${q.id}, ${index})">
-                                ${answer}
-                                ${index === q.correct ? ' <i class="fas fa-check-circle" style="color: var(--success);"></i>' : ''}
-                            </div>
-                        `).join('')}
-                        <div style="margin-top: 1rem; padding: 0.5rem; background: #e9ecef; border-radius: 4px;">
+                        ${answersHtml}
+                        <div class="explanation">
                             <i class="fas fa-info-circle"></i> ${q.explanation}
+                            ${note ? `<p><i class="fas fa-edit"></i> Ghi chú: ${note}</p>` : ''}
                         </div>
                     </div>
                 </div>
@@ -1312,62 +980,66 @@
                     <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${q.id})">
                         <i class="fas fa-bookmark"></i>
                     </button>
-                    <button class="note-btn" onclick="openNoteModal(${q.id})">
+                    <button onclick="openNoteModal(${q.id})">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <span>${q.year}</span>
+                    <span>ID: ${q.id}</span>
                 </div>
             `;
 
             return card;
         }
 
-        // Mở rộng/thu gọn câu hỏi
+        // Mở rộng câu hỏi
         function toggleExpand(id) {
             const card = document.querySelector(`.question-card[data-id="${id}"]`);
             card.classList.toggle('expanded');
         }
 
-        // Chọn đáp án
+        // Chọn đáp án (chế độ luyện tập)
         function selectAnswer(questionId, answerIndex) {
+            if (currentMode !== 'practice') return;
+            
             const question = questions.find(q => q.id === questionId);
             userAnswers[questionId] = answerIndex;
             localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
             
-            // Cập nhật hiển thị
-            const card = document.querySelector(`.question-card[data-id="${questionId}]"`);
+            // Cập nhật lại card
+            const card = document.querySelector(`.question-card[data-id="${questionId}"]`);
             const answers = card.querySelectorAll('.answer-item');
             answers.forEach((a, i) => {
-                a.classList.remove('selected', 'correct', 'incorrect');
-                if (i === answerIndex) {
-                    a.classList.add(i === question.correct ? 'correct' : 'incorrect');
-                }
+                a.classList.remove('correct-answer', 'selected-wrong');
                 if (i === question.correct) {
-                    a.classList.add('correct');
+                    a.classList.add('correct-answer');
+                }
+                if (i === answerIndex && i !== question.correct) {
+                    a.classList.add('selected-wrong');
                 }
             });
 
             updateStats();
-            showToast(answerIndex === question.correct ? 'Chính xác!' : 'Sai rồi, hãy xem giải thích nhé!');
+            
+            // Thông báo
+            if (answerIndex === question.correct) {
+                alert('Chính xác! ' + question.explanation);
+            } else {
+                alert('Sai rồi! Đáp án đúng là: ' + question.answers[question.correct] + '\n\n' + question.explanation);
+            }
         }
 
-        // Đánh dấu câu hỏi
+        // Đánh dấu bookmark
         function toggleBookmark(id) {
-            const index = bookmarkedIds.indexOf(id);
+            const index = bookmarks.indexOf(id);
             if (index === -1) {
-                bookmarkedIds.push(id);
-                showToast('Đã thêm vào đánh dấu');
+                bookmarks.push(id);
             } else {
-                bookmarkedIds.splice(index, 1);
-                showToast('Đã xóa khỏi đánh dấu');
+                bookmarks.splice(index, 1);
             }
-            localStorage.setItem('bookmarkedIds', JSON.stringify(bookmarkedIds));
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
             
-            // Cập nhật nút
             const btn = document.querySelector(`.question-card[data-id="${id}"] .bookmark-btn`);
-            if (btn) {
-                btn.classList.toggle('active');
-            }
+            if (btn) btn.classList.toggle('active');
+            
             updateStats();
         }
 
@@ -1389,7 +1061,7 @@
             if (currentQuestionId) {
                 notes[currentQuestionId] = note;
                 localStorage.setItem('notes', JSON.stringify(notes));
-                showToast('Đã lưu ghi chú');
+                alert('Đã lưu ghi chú');
             }
             closeModal();
         }
@@ -1402,8 +1074,7 @@
             } else {
                 currentQuestions = questions.filter(q => 
                     q.question.toLowerCase().includes(term) ||
-                    q.explanation.toLowerCase().includes(term) ||
-                    q.event.toLowerCase().includes(term)
+                    q.explanation.toLowerCase().includes(term)
                 );
             }
             currentPage = 1;
@@ -1424,23 +1095,18 @@
             displayQuestions();
         }
 
-        // Áp dụng bộ lọc
-        function applyFilters() {
-            const era = document.getElementById('era-filter').value;
-            const difficulty = document.getElementById('difficulty-filter').value;
-            const status = document.getElementById('status-filter').value;
-
-            currentQuestions = questions.filter(q => {
-                if (era !== 'all' && q.era !== era) return false;
-                if (difficulty !== 'all' && q.difficulty !== difficulty) return false;
-                if (status === 'bookmarked' && !bookmarkedIds.includes(q.id)) return false;
-                if (status === 'correct' && userAnswers[q.id] !== q.correct) return false;
-                if (status === 'incorrect' && userAnswers[q.id] === q.correct) return false;
-                if (status === 'unanswered' && userAnswers[q.id] !== undefined) return false;
-                return true;
-            });
-            currentPage = 1;
-            displayQuestions();
+        // Cập nhật thống kê
+        function updateStats() {
+            const total = questions.length;
+            const completed = Object.keys(userAnswers).length;
+            const correct = Object.entries(userAnswers).filter(([id, ans]) => 
+                ans === questions.find(q => q.id === parseInt(id))?.correct
+            ).length;
+            
+            document.getElementById('total-questions').textContent = total;
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('correct-count').textContent = correct;
+            document.getElementById('bookmark-count').textContent = bookmarks.length;
         }
 
         // Cập nhật phân trang
@@ -1450,7 +1116,7 @@
             if (!pagination) return;
 
             let html = '';
-            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}><i class="fas fa-chevron-left"></i></button>`;
+            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹</button>`;
             
             for (let i = 1; i <= totalPages; i++) {
                 if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
@@ -1460,7 +1126,7 @@
                 }
             }
             
-            html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}><i class="fas fa-chevron-right"></i></button>`;
+            html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>›</button>`;
             
             pagination.innerHTML = html;
         }
@@ -1473,140 +1139,162 @@
             displayQuestions();
         }
 
-        // Cập nhật thống kê
-        function updateStats() {
-            const total = questions.length;
-            const completed = Object.keys(userAnswers).length;
-            const correct = Object.entries(userAnswers).filter(([id, ans]) => 
-                ans === questions.find(q => q.id === parseInt(id))?.correct
-            ).length;
-            
-            document.getElementById('total-questions').textContent = total;
-            document.getElementById('completed-count').textContent = completed;
-            document.getElementById('bookmarked-count').textContent = bookmarkedIds.length;
-            
-            const percent = Math.round((completed / total) * 100);
-            document.getElementById('progress-percent').textContent = percent + '%';
-            document.getElementById('progress-fill').style.width = percent + '%';
-        }
-
-        // Hiển thị thông báo
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = message;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
-
         // Chuyển section
         function showSection(section) {
-            document.querySelectorAll('.container').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('flashcard-section').style.display = 'none';
+            
             document.getElementById(section + '-section').style.display = 'block';
             
-            document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
-            event.target.classList.add('active');
-
-            if (section === 'quiz') startQuiz();
-            if (section === 'flashcard') initFlashcard();
-            if (section === 'timeline') renderTimeline();
+            if (section === 'quiz') {
+                startQuiz();
+            } else if (section === 'flashcard') {
+                startFlashcard();
+            }
         }
 
-        // Bắt đầu quiz
+        // Đổi chế độ
+        function setMode(mode) {
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentMode = mode;
+            displayQuestions();
+        }
+
+        // ===== QUIZ FUNCTIONS =====
         function startQuiz() {
-            quizState.currentIndex = 0;
-            quizState.answers = [];
-            quizState.score = 0;
-            quizState.timeLeft = 900;
+            quizQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 10);
+            quizIndex = 0;
+            quizAnswers = new Array(quizQuestions.length).fill(null);
+            timeLeft = 900;
             
-            document.getElementById('current-question').textContent = '1';
-            document.getElementById('total-questions-quiz').textContent = '20';
+            document.getElementById('total-quiz').textContent = quizQuestions.length;
+            document.getElementById('total-score').textContent = quizQuestions.length;
             document.getElementById('score').textContent = '0';
+            document.getElementById('timer').textContent = '15:00';
+            document.getElementById('quiz-result').style.display = 'none';
             
-            if (quizState.timer) clearInterval(quizState.timer);
-            quizState.timer = setInterval(updateTimer, 1000);
+            if (quizTimer) clearInterval(quizTimer);
+            quizTimer = setInterval(updateTimer, 1000);
             
             loadQuizQuestion();
         }
 
-        // Cập nhật timer
         function updateTimer() {
-            quizState.timeLeft--;
-            const minutes = Math.floor(quizState.timeLeft / 60);
-            const seconds = quizState.timeLeft % 60;
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
             document.getElementById('timer').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
             
-            if (quizState.timeLeft <= 0) {
-                clearInterval(quizState.timer);
+            if (timeLeft <= 0) {
+                clearInterval(quizTimer);
                 submitQuiz();
             }
         }
 
-        // Tải câu hỏi quiz
         function loadQuizQuestion() {
-            const q = questions[quizState.currentIndex];
+            const q = quizQuestions[quizIndex];
             document.getElementById('quiz-question').textContent = q.question;
+            document.getElementById('current-quiz').textContent = quizIndex + 1;
             
             let optionsHtml = '';
-            q.answers.forEach((answer, index) => {
-                optionsHtml += `<div class="quiz-option" onclick="selectQuizOption(${index})">${answer}</div>`;
+            q.answers.forEach((answer, i) => {
+                const selectedClass = quizAnswers[quizIndex] === i ? 'selected' : '';
+                optionsHtml += `<div class="quiz-option ${selectedClass}" onclick="selectQuizOption(${i})">${answer}</div>`;
             });
             document.getElementById('quiz-options').innerHTML = optionsHtml;
+            
+            // Cập nhật nút
+            document.querySelector('.quiz-btn.prev').disabled = quizIndex === 0;
         }
 
-        // Chọn đáp án quiz
         function selectQuizOption(index) {
+            quizAnswers[quizIndex] = index;
+            
+            // Cập nhật hiển thị
             document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
             event.target.classList.add('selected');
-            quizState.answers[quizState.currentIndex] = index;
+            
+            // Tính điểm tạm thời
+            const score = quizAnswers.reduce((total, ans, idx) => {
+                return total + (ans === quizQuestions[idx].correct ? 1 : 0);
+            }, 0);
+            document.getElementById('score').textContent = score;
         }
 
-        // Câu tiếp theo
-        function nextQuestion() {
-            if (quizState.currentIndex < questions.length - 1) {
-                quizState.currentIndex++;
-                document.getElementById('current-question').textContent = quizState.currentIndex + 1;
+        function nextQuiz() {
+            if (quizIndex < quizQuestions.length - 1) {
+                quizIndex++;
                 loadQuizQuestion();
             }
         }
 
-        // Câu trước
-        function prevQuestion() {
-            if (quizState.currentIndex > 0) {
-                quizState.currentIndex--;
-                document.getElementById('current-question').textContent = quizState.currentIndex + 1;
+        function prevQuiz() {
+            if (quizIndex > 0) {
+                quizIndex--;
                 loadQuizQuestion();
             }
         }
 
-        // Nộp bài
         function submitQuiz() {
-            clearInterval(quizState.timer);
+            clearInterval(quizTimer);
+            
             let score = 0;
-            quizState.answers.forEach((ans, index) => {
-                if (ans === questions[index].correct) score++;
+            let results = '';
+            
+            quizQuestions.forEach((q, i) => {
+                const isCorrect = quizAnswers[i] === q.correct;
+                if (isCorrect) score++;
+                
+                results += `
+                    <div style="margin-bottom: 1rem; padding: 0.5rem; background: ${isCorrect ? '#d4edda' : '#f8d7da'}; border-radius: 4px;">
+                        <strong>Câu ${i + 1}:</strong> ${q.question}<br>
+                        <strong>Đáp án của bạn:</strong> ${quizAnswers[i] !== null ? q.answers[quizAnswers[i]] : 'Chưa chọn'}<br>
+                        <strong>Đáp án đúng:</strong> ${q.answers[q.correct]}<br>
+                        <em>${q.explanation}</em>
+                    </div>
+                `;
             });
             
-            alert(`Bạn đã hoàn thành bài kiểm tra!\nĐiểm số: ${score}/${questions.length}\nTỉ lệ đúng: ${Math.round(score/questions.length*100)}%`);
-            showSection('home');
+            const percent = Math.round((score / quizQuestions.length) * 100);
+            document.getElementById('quiz-result').innerHTML = `
+                <div class="quiz-result">
+                    <h2>Kết quả bài kiểm tra</h2>
+                    <div class="result-score">${score}/${quizQuestions.length}</div>
+                    <div>Tỉ lệ đúng: ${percent}%</div>
+                    <div style="margin: 1rem 0;">
+                        <button onclick="startQuiz()" class="quiz-btn">Làm lại</button>
+                        <button onclick="showSection('home')" class="quiz-btn">Về trang chủ</button>
+                    </div>
+                    <div style="max-height: 400px; overflow-y: auto; margin-top: 2rem;">
+                        ${results}
+                    </div>
+                </div>
+            `;
+            document.getElementById('quiz-result').style.display = 'block';
         }
 
-        // Flashcard
-        function initFlashcard() {
+        // ===== FLASHCARD FUNCTIONS =====
+        function startFlashcard() {
             flashcardIndex = 0;
             loadFlashcard();
         }
 
         function loadFlashcard() {
             const q = questions[flashcardIndex];
-            document.getElementById('flashcard-front').innerHTML = `<h3>${q.question}</h3>`;
+            document.getElementById('flashcard-front').innerHTML = `
+                <h3>${q.question}</h3>
+                <p style="margin-top: 1rem;"><small>Click để xem đáp án</small></p>
+            `;
             document.getElementById('flashcard-back').innerHTML = `
-                <h4>Đáp án:</h4>
+                <h3>Đáp án:</h3>
                 <p>${q.answers[q.correct]}</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem;">${q.explanation}</p>
+                <p style="margin-top: 1rem;">${q.explanation}</p>
             `;
             document.getElementById('card-counter').textContent = `${flashcardIndex + 1}/${questions.length}`;
         }
@@ -1629,147 +1317,6 @@
                 loadFlashcard();
                 document.querySelector('.flashcard').classList.remove('flipped');
             }
-        }
-
-        // Timeline
-        function renderTimeline() {
-            const timeline = document.getElementById('timeline');
-            const sortedQuestions = [...questions].sort((a, b) => a.year - b.year);
-            
-            timeline.innerHTML = sortedQuestions.map(q => `
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">${q.year < 0 ? q.year + ' TCN' : q.year}</div>
-                        <h3>${q.event}</h3>
-                        <p>${q.question}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Charts
-        function initCharts() {
-            // Biểu đồ thời kỳ
-            const eraCtx = document.getElementById('era-chart').getContext('2d');
-            const eraCounts = {
-                'ancient': questions.filter(q => q.era === 'ancient').length,
-                'feudal': questions.filter(q => q.era === 'feudal').length,
-                'french': questions.filter(q => q.era === 'french').length,
-                'revolution': questions.filter(q => q.era === 'revolution').length,
-                'modern': questions.filter(q => q.era === 'modern').length
-            };
-            
-            charts.era = new Chart(eraCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Cổ đại', 'Phong kiến', 'Pháp thuộc', 'Cách mạng', 'Hiện đại'],
-                    datasets: [{
-                        data: Object.values(eraCounts),
-                        backgroundColor: ['#8b1e1e', '#c49b3b', '#2c5e2e', '#17a2b8', '#6c757d']
-                    }]
-                }
-            });
-
-            // Biểu đồ độ khó
-            const diffCtx = document.getElementById('difficulty-chart').getContext('2d');
-            const diffCounts = {
-                'easy': questions.filter(q => q.difficulty === 'easy').length,
-                'medium': questions.filter(q => q.difficulty === 'medium').length,
-                'hard': questions.filter(q => q.difficulty === 'hard').length
-            };
-            
-            charts.difficulty = new Chart(diffCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Dễ', 'Trung bình', 'Khó'],
-                    datasets: [{
-                        data: Object.values(diffCounts),
-                        backgroundColor: ['#4caf50', '#ff9800', '#f44336']
-                    }]
-                }
-            });
-
-            // Biểu đồ tiến độ
-            const progressCtx = document.getElementById('progress-chart').getContext('2d');
-            charts.progress = new Chart(progressCtx, {
-                type: 'line',
-                data: {
-                    labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
-                    datasets: [{
-                        label: 'Câu đã học',
-                        data: [5, 8, 12, 15, 20, 25, 30],
-                        borderColor: '#8b1e1e',
-                        fill: false
-                    }]
-                }
-            });
-        }
-
-        // Streak
-        function startStreak() {
-            const lastLogin = localStorage.getItem('lastLogin');
-            const today = new Date().toDateString();
-            
-            if (lastLogin !== today) {
-                let streak = parseInt(localStorage.getItem('streak') || '0');
-                const yesterday = new Date();
-                yesterday.setDate(yesterday.getDate() - 1);
-                
-                if (lastLogin === yesterday.toDateString()) {
-                    streak++;
-                } else {
-                    streak = 1;
-                }
-                
-                localStorage.setItem('streak', streak);
-                localStorage.setItem('lastLogin', today);
-                document.getElementById('streak-days').textContent = streak;
-            } else {
-                document.getElementById('streak-days').textContent = localStorage.getItem('streak') || '0';
-            }
-        }
-
-        // Load dữ liệu người dùng
-        function loadUserProgress() {
-            // Cập nhật trạng thái các nút
-            displayQuestions();
-        }
-
-        // Notifications
-        function showNotifications() {
-            showToast('Bạn có 3 thông báo mới');
-        }
-
-        // Profile
-        function showProfile() {
-            showToast('Tính năng đang phát triển');
-        }
-
-        // Set mode
-        function setMode(mode) {
-            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if (mode === 'exam') {
-                itemsPerPage = 20;
-                showToast('Chế độ thi thử: 20 câu, 30 phút');
-            } else {
-                itemsPerPage = 8;
-            }
-            displayQuestions();
-        }
-
-        // Filter by status
-        function filterByStatus(status) {
-            if (status === 'completed') {
-                currentQuestions = questions.filter(q => userAnswers[q.id] !== undefined);
-            } else if (status === 'bookmarked') {
-                currentQuestions = questions.filter(q => bookmarkedIds.includes(q.id));
-            } else {
-                currentQuestions = [...questions];
-            }
-            currentPage = 1;
-            displayQuestions();
         }
     </script>
 </body>
