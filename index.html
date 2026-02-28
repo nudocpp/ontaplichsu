@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Lịch Sử Việt Nam</title>
+    <!-- Font Awesome cho icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8b1e1e;
+            --secondary-color: #c49b3b;
+            --accent-color: #2c5e2e;
+            --light-bg: #f9f7f3;
+            --dark-text: #2c1810;
+            --border-color: #d4a373;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #5e0b0b);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark-text);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-box input {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            width: 250px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            background-color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: #b38632;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-card .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .stat-card .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Filters */
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            color: var(--dark-text);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: var(--border-color);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Questions Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), #5e0b0b);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .era-tag {
+            background: var(--secondary-color);
+            color: var(--dark-text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .difficulty-badge.easy {
+            background: #4caf50;
+            color: white;
+        }
+
+        .difficulty-badge.medium {
+            background: #ff9800;
+            color: white;
+        }
+
+        .difficulty-badge.hard {
+            background: #f44336;
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .answers {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--light-bg);
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .question-card.expanded .answers {
+            max-height: 500px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .answer-item {
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            background: white;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .answer-item.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            font-weight: 500;
+        }
+
+        .answer-item.correct i {
+            color: #28a745;
+            margin-right: 0.5rem;
+        }
+
+        .answer-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .expand-icon {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .page-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .page-btn:hover {
+            background: var(--border-color);
+            color: white;
+        }
+
+        .page-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Quiz Mode Toggle */
+        .mode-toggle {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .mode-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            background: white;
+            color: var(--dark-text);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .mode-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-landmark"></i> Ôn Tập Lịch Sử Việt Nam</h1>
+            <p>Hành trình qua những trang sử hào hùng của dân tộc</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home" class="active"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="#questions"><i class="fas fa-question-circle"></i> Câu hỏi</a>
+                <a href="#quiz"><i class="fas fa-gamepad"></i> Làm bài kiểm tra</a>
+                <a href="#timeline"><i class="fas fa-clock"></i> Dòng thời gian</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm câu hỏi...">
+                <button onclick="searchQuestions()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Thống kê -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-history"></i>
+                <div class="stat-number">120</div>
+                <div class="stat-label">Tổng số câu hỏi</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-scroll"></i>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Thời kỳ lịch sử</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-trophy"></i>
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Tỉ lệ hoàn thành</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-number">1,234</div>
+                <div class="stat-label">Người đang ôn tập</div>
+            </div>
+        </div>
+
+        <!-- Chế độ học tập -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" onclick="setMode('review')"><i class="fas fa-book-open"></i> Chế độ ôn tập</button>
+            <button class="mode-btn" onclick="setMode('quiz')"><i class="fas fa-question"></i> Chế độ kiểm tra</button>
+            <button class="mode-btn" onclick="setMode('flashcard')"><i class="fas fa-layer-group"></i> Flashcard</button>
+        </div>
+
+        <!-- Bộ lọc -->
+        <div class="filters">
+            <div class="filter-title"><i class="fas fa-filter"></i> Lọc theo thời kỳ:</div>
+            <div class="filter-buttons" id="eraFilters">
+                <button class="filter-btn active" onclick="filterByEra('all')">Tất cả</button>
+                <button class="filter-btn" onclick="filterByEra('ancient')">Cổ đại</button>
+                <button class="filter-btn" onclick="filterByEra('feudal')">Phong kiến</button>
+                <button class="filter-btn" onclick="filterByEra('french')">Pháp thuộc</button>
+                <button class="filter-btn" onclick="filterByEra('revolution')">Cách mạng</button>
+                <button class="filter-btn" onclick="filterByEra('modern')">Hiện đại</button>
+            </div>
+        </div>
+
+        <!-- Danh sách câu hỏi -->
+        <div class="questions-grid" id="questionsGrid">
+            <!-- Câu hỏi sẽ được thêm bằng JavaScript -->
+        </div>
+
+        <!-- Phân trang -->
+        <div class="pagination" id="pagination">
+            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-landmark"></i> Ôn Tập Lịch Sử</h3>
+                <p>Dự án phi lợi nhuận nhằm giúp học sinh, sinh viên và những người yêu thích lịch sử có thể ôn tập và tìm hiểu về lịch sử Việt Nam một cách dễ dàng và hiệu quả.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Về chúng tôi</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Đóng góp câu hỏi</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Báo lỗi</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Ôn Tập Lịch Sử Việt Nam. Mã nguồn mở trên GitHub.</p>
+            <p>Dữ liệu được tổng hợp từ nhiều nguồn và kiểm duyệt bởi các nhà sử học.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dữ liệu câu hỏi mẫu
+        const questions = [
+            {
+                id: 1,
+                question: "Ai là vị vua đầu tiên của nhà nước phong kiến tập quyền Việt Nam?",
+                answers: ["Đinh Bộ Lĩnh", "Lý Công Uẩn", "Trần Thái Tông", "Lê Hoàn"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "easy"
+            },
+            {
+                id: 2,
+                question: "Chiến thắng Bạch Đằng năm 938 có ý nghĩa gì?",
+                answers: [
+                    "Kết thúc 1000 năm Bắc thuộc, mở ra thời kỳ độc lập tự chủ",
+                    "Đánh tan quân Nguyên Mông lần thứ nhất",
+                    "Thống nhất đất nước sau loạn 12 sứ quân",
+                    "Mở đầu thời kỳ phong kiến Việt Nam"
+                ],
+                correct: 0,
+                era: "ancient",
+                difficulty: "medium"
+            },
+            {
+                id: 3,
+                question: "Ai là tác giả của 'Bình Ngô đại cáo'?",
+                answers: ["Nguyễn Trãi", "Lê Lợi", "Nguyễn Huệ", "Trần Hưng Đạo"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "easy"
+            },
+            {
+                id: 4,
+                question: "Trận Điện Biên Phủ diễn ra vào năm nào?",
+                answers: ["1954", "1945", "1975", "1930"],
+                correct: 0,
+                era: "modern",
+                difficulty: "easy"
+            },
+            {
+                id: 5,
+                question: "Ai là người lãnh đạo cuộc khởi nghĩa Lam Sơn?",
+                answers: ["Lê Lợi", "Nguyễn Trãi", "Trần Nguyên Hãn", "Đinh Liệt"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "easy"
+            },
+            {
+                id: 6,
+                question: "Nhà nước Văn Lang ra đời vào khoảng thời gian nào?",
+                answers: [
+                    "Thế kỷ VII TCN",
+                    "Thế kỷ III TCN",
+                    "Thế kỷ I SCN",
+                    "Thế kỷ X SCN"
+                ],
+                correct: 0,
+                era: "ancient",
+                difficulty: "medium"
+            },
+            {
+                id: 7,
+                question: "Quang Trung - Nguyễn Huệ lên ngôi vua vào năm nào?",
+                answers: ["1788", "1789", "1771", "1792"],
+                correct: 0,
+                era: "feudal",
+                difficulty: "medium"
+            },
+            {
+                id: 8,
+                question: "Hiệp định Paris được ký kết vào năm nào?",
+                answers: ["1973", "1972", "1975", "1971"],
+                correct: 0,
+                era: "modern",
+                difficulty: "hard"
+            }
+        ];
+
+        // Hiển thị câu hỏi
+        function displayQuestions(questionsToShow) {
+            const grid = document.getElementById('questionsGrid');
+            grid.innerHTML = '';
+            
+            questionsToShow.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.onclick = function() { this.classList.toggle('expanded'); };
+                
+                // Tạo HTML cho câu hỏi
+                let answersHtml = '';
+                q.answers.forEach((answer, index) => {
+                    const isCorrect = index === q.correct;
+                    answersHtml += `
+                        <div class="answer-item ${isCorrect ? 'correct' : ''}">
+                            ${isCorrect ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle"></i>'}
+                            ${answer}
+                        </div>
+                    `;
+                });
+
+                // Badge độ khó
+                let difficultyBadge = '';
+                let difficultyClass = '';
+                if (q.difficulty === 'easy') {
+                    difficultyBadge = 'Dễ';
+                    difficultyClass = 'easy';
+                } else if (q.difficulty === 'medium') {
+                    difficultyBadge = 'Trung bình';
+                    difficultyClass = 'medium';
+                } else {
+                    difficultyBadge = 'Khó';
+                    difficultyClass = 'hard';
+                }
+
+                // Thời kỳ label
+                let eraLabel = '';
+                switch(q.era) {
+                    case 'ancient':
+                        eraLabel = 'Cổ đại';
+                        break;
+                    case 'feudal':
+                        eraLabel = 'Phong kiến';
+                        break;
+                    case 'french':
+                        eraLabel = 'Pháp thuộc';
+                        break;
+                    case 'revolution':
+                        eraLabel = 'Cách mạng';
+                        break;
+                    case 'modern':
+                        eraLabel = 'Hiện đại';
+                        break;
+                    default:
+                        eraLabel = q.era;
+                }
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="era-tag"><i class="fas fa-tag"></i> ${eraLabel}</span>
+                        <span class="difficulty-badge ${difficultyClass}">${difficultyBadge}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="question-text">
+                            <i class="fas fa-question-circle" style="color: var(--primary-color); margin-right: 8px;"></i>
+                            ${q.question}
+                        </div>
+                        <div class="answers">
+                            ${answersHtml}
+                        </div>
+                        <div class="expand-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Lọc theo thời kỳ
+        function filterByEra(era) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            let filteredQuestions;
+            if (era === 'all') {
+                filteredQuestions = questions;
+            } else {
+                filteredQuestions = questions.filter(q => q.era === era);
+            }
+            
+            displayQuestions(filteredQuestions);
+        }
+
+        // Tìm kiếm
+        function searchQuestions() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredQuestions = questions.filter(q => 
+                q.question.toLowerCase().includes(searchTerm) ||
+                q.answers.some(a => a.toLowerCase().includes(searchTerm))
+            );
+            displayQuestions(filteredQuestions);
+        }
+
+        // Đổi chế độ học tập
+        function setMode(mode) {
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (mode === 'quiz') {
+                alert('Chế độ kiểm tra sẽ hiển thị câu hỏi và cho phép chọn đáp án. Đang phát triển...');
+            } else if (mode === 'flashcard') {
+                alert('Chế độ flashcard sẽ hiển thị câu hỏi và đáp án như thẻ học. Đang phát triển...');
+            }
+        }
+
+        // Tải trang
+        document.addEventListener('DOMContentLoaded', function() {
+            displayQuestions(questions);
+        });
+
+        // Xử lý enter trong search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchQuestions();
+            }
+        });
+    </script>
+</body>
+</html>
